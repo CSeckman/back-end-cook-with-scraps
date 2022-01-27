@@ -5,7 +5,6 @@ import { decodeUserFromToken, checkAuth } from '../middleware/auth.js'
 const router = Router()
 
 /*---------- Public Routes ----------*/
-console.log('made it to router')
 router.get('/:query', recipesCtrl.searchRecipes)
 
 /*---------- Protected Routes ----------*/

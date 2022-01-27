@@ -3,8 +3,6 @@ import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 
-console.log('made it')
-
 import { router as recipesRouter } from './routes/recipes.js'
 import { router as authRouter } from './routes/auth.js'
 
