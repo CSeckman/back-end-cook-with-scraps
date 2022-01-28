@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Profile } from '../models/profile.js'
 
 function searchRecipes(req, res) {
   console.log(req.params.query, "ctrl")
@@ -8,4 +9,19 @@ function searchRecipes(req, res) {
   .then(apiResponse => res.json(apiResponse.data))
 }
 
-export { searchRecipes }
+function saveRecipe(req, res) {
+  console.log(req.params.profileId, req.body, "params body ctrl")
+  Profile.findById(req.params.profileId)
+  .then (profile => {
+    profile.recipes.push(req.body)
+    profile.save()
+    .then(profileWithRecipe => {
+      res.json(profileWithRecipe)
+    })
+  })
+}
+
+export { 
+  searchRecipes,
+  saveRecipe
+}
