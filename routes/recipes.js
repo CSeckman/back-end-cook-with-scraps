@@ -9,6 +9,7 @@ router.get('/:query', recipesCtrl.searchRecipes)
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.post('/:profileId', checkAuth, recipesCtrl.saveRecipe)
+router.get('/profile/:profileId', checkAuth, recipesCtrl.index)
+router.post('/:profileId', checkAuth, recipesCtrl.create)
 
 export { router }

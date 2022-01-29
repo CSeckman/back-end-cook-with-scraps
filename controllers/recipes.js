@@ -9,7 +9,16 @@ function searchRecipes(req, res) {
   .then(apiResponse => res.json(apiResponse.data))
 }
 
-function saveRecipe(req, res) {
+function index(req, res) {
+  Profile.findById(req.params.profileId)
+  .then(profile => {
+    let myRecipes = profile.recipes
+    console.log(myRecipes, "ctrl recipes")
+    res.json(myRecipes)
+  })
+}
+
+function create(req, res) {
   console.log(req.params.profileId, req.body, "params body ctrl")
   Profile.findById(req.params.profileId)
   .then (profile => {
@@ -21,7 +30,9 @@ function saveRecipe(req, res) {
   })
 }
 
+
 export { 
   searchRecipes,
-  saveRecipe
+  index,
+  create
 }
